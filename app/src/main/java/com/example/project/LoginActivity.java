@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements
         setProgressBar(R.id.progressBar);
 
         // Button listeners
+        findViewById(R.id.altSignIn).setOnClickListener(this);
         findViewById(R.id.signInButton).setOnClickListener(this);
         findViewById(R.id.signOutButton).setOnClickListener(this);
         findViewById(R.id.disconnectButton).setOnClickListener(this);
@@ -123,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -179,13 +181,13 @@ public class LoginActivity extends AppCompatActivity implements
             mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
-            findViewById(R.id.signInButton).setVisibility(View.GONE);
+            findViewById(R.id.signInAndLogin).setVisibility(View.GONE);
             findViewById(R.id.signOutAndDisconnect).setVisibility(View.VISIBLE);
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
 
-            findViewById(R.id.signInButton).setVisibility(View.VISIBLE);
+            findViewById(R.id.signInAndLogin).setVisibility(View.VISIBLE);
             findViewById(R.id.signOutAndDisconnect).setVisibility(View.GONE);
         }
     }
