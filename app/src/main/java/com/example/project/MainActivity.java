@@ -3,6 +3,7 @@ package com.example.project;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -37,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView user = headerView.findViewById(R.id.user);
+        TextView status = headerView.findViewById(R.id.status);
+        String name = getIntent().getExtras().getString("name");
+        String statusstr = getIntent().getExtras().getString("status");
+        user.setText(name);
+        status.setText(statusstr);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(

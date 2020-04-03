@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.project.R;
 
-public class GalleryFragment extends Fragment {
+public class LessonFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

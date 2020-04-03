@@ -12,14 +12,12 @@ import java.util.ArrayList;
 public class User {
     private String name, student_id;
     private int rating;
-    private Uri PFP_URI;
     private boolean isAdmin;
     private static ArrayList<User> userArrayList = initArrayList();
 
-    public User(String name, String student_id, Uri PFP_URI, int rating, boolean isAdmin) {
+    public User(String name, String student_id, int rating, boolean isAdmin) {
         this.name = name;
         this.student_id = student_id;
-        this.PFP_URI = PFP_URI;
         this.rating = rating;
         this.isAdmin = false;
     }
@@ -28,9 +26,6 @@ public class User {
         return name;
     }
     public String getStudent_id(){return student_id;}
-    public Uri getPFP() {
-        return PFP_URI;
-    }
     public int getRating() {
         return rating;
     }
@@ -40,23 +35,19 @@ public class User {
     }
 
     public String toString() {
-        return "Name:" + getName() + "\nStudent ID:" + student_id + "\nURI:" + PFP_URI;
+        return "Name:" + getName() + "\nStudent ID:" + student_id;
     }
     public static ArrayList<User> initArrayList() {
         userArrayList = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("projectusers").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                     String name = doc.get("name", String.class);
-                    String URI = doc.get("PFP_URI", String.class);
                     String student_id = doc.get("student_id", String.class);
                     int rating = doc.get("rating", Integer.class);
-                    if (URI != null)
-                        addToArrayList(userArrayList, new User(name, student_id, Uri.parse(URI),rating,false));
-                    else
-                        addToArrayList(userArrayList, new User(name, student_id, null, rating,false));
+                    addToArrayList(userArrayList, new User(name, student_id,rating,false));
                 }
             }
         });

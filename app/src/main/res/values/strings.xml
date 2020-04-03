@@ -6,7 +6,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="have_account">Have an account?</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -98,7 +99,6 @@
 
     <string name="generic_title_text">OAuth Sign In</string>
     <string name="generic_signin_fmt">Sign In with %s</string>
-    <string name="generic_status_fmt">User: %s (%s)</string>
     <string name="generic_label_provider">Provider:</string>
 
     <string name="id_fmt">User ID: %s</string>

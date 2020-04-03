@@ -124,7 +124,10 @@ public class LoginActivity extends AppCompatActivity implements
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("name", mAuth.getCurrentUser().getDisplayName());
+                            intent.putExtra("status", "User");
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -201,6 +204,10 @@ public class LoginActivity extends AppCompatActivity implements
             signOut();
         } else if (i == R.id.disconnectButton) {
             revokeAccess();
+        }
+        else{
+            Intent intent = new Intent(this, ManualLoginActivity.class);
+            startActivity(intent);
         }
     }
     @VisibleForTesting
