@@ -3,28 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_quiz">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_quiz"
         android:name="com.example.project.QuizFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home">
-
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment" />
+        android:label="@string/menu_quiz"
+        tools:layout="@layout/fragment_quiz">
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_scan"
+        android:name="com.example.project.ScanFragment"
+        android:label="@string/menu_scan"
+        tools:layout="@layout/fragment_scan" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.project.LessonFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/nav_rating"
+        android:name="com.example.project.RatingFragment"
+        android:label="@string/menu_rating"
+        tools:layout="@layout/fragment_rating" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.project.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_check"
+        android:name="com.example.project.WordCheckerFragment"
+        android:label="@string/menu_checker"
+        tools:layout="@layout/fragment_checker" />
+    <fragment
+        android:id="@+id/nav_play"
+        android:name="com.example.project.PlayFragment"
+        android:label="@string/menu_play"
+        tools:layout="@layout/fragment_play" />
 </navigation>

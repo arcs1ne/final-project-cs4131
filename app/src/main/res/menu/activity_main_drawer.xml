@@ -5,16 +5,34 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_quiz"
+            android:icon="@drawable/ic_noun_exam_2937004"
+            android:title="@string/menu_quiz" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_scan"
+            android:icon="@drawable/ic_noun_scan_1647111"
+            android:title="@string/menu_scan" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_rating"
+            android:icon="@drawable/ic_noun_star_3238640"
+            android:title="@string/menu_rating" />
+        <item
+            android:id="@+id/nav_check"
+            android:icon="@drawable/ic_noun_check_3244673"
+            android:title="@string/menu_checker"/>
+        <item
+            android:id="@+id/nav_play"
+            android:icon="@drawable/ic_noun_crossword_puzzle_1176719"
+            android:title="@string/menu_play" />
+
     </group>
+    <item android:title="@string/menu_lessons"
+        android:icon="@drawable/ic_noun_lesson_269257">
+        <menu>
+            <item
+                android:title="tbc" />
+            <item
+                android:title="tbc2" />
+        </menu>
+    </item>
 </menu>
