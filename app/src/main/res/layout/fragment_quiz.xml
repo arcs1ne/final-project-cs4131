@@ -1,22 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     tools:context=".QuizFragment">
-
-    <TextView
-        android:id="@+id/text_home"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:text="Select category"
+            android:id="@+id/filled_exposed_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/start"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="start quiz"/>
+    <!-- 2/3: Is this a valid x-letter word? -->
+    <!-- 4JQX: Unscramble the following letters. -->
+    <!-- Bingo: Type all possible words with the given stem.  -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TITLE"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"
+        android:textSize="30dp"/>
+    <TextView
+        android:id="@+id/question"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_height="wrap_content"
+        android:text="QUESTION"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:textSize="20dp"/>
+    <!-- bingo-->
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/typedsofar"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TYPED SO FAR"
+        android:layout_gravity="center"
+        android:textSize="13dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:visibility="invisible"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <!--  4 letter and bingo use  -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter possible words"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- 4, bingo -->
+    <Button
+        android:visibility="invisible"
+        android:id="@+id/next"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Next"/>
+    <!--2 3-->
+    <LinearLayout
+
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/yes"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Yes"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/green"/>
+
+        <Button
+            android:id="@+id/no"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="NO"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/red"/>
+    </LinearLayout>
+    <!--2 3 letter-->
+    <TextView
+        android:id="@+id/result"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="answer correct?"
+        android:layout_gravity="center"
+
+        android:visibility="invisible"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/score"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="score"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"/>
+</LinearLayout>

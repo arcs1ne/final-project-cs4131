@@ -28,7 +28,7 @@ public class WordCheckerFragment extends Fragment {
     static TextInputEditText e;
     static TextView v;
     static String s;
-    HashMap<String, String> definitionMap;
+    static HashMap<String, String> definitionMap;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
