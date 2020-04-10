@@ -28,10 +28,39 @@ public class WordCheckerFragment extends Fragment {
     static TextInputEditText e;
     static TextView v;
     static String s;
-    HashMap<String,String> definitionMap;
+    HashMap<String, String> definitionMap;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_checker, container, false);
+        if (definitionMap == null) {
+            Reader reader;
+            definitionMap = new HashMap<>();
+            InputStream file = null;
+            try {
+                BufferedReader br = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_1.txt")));
+                BufferedReader br2 = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_2.txt")));
+                BufferedReader br3 = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_3.txt")));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\t", 2);
+                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
+                }
+                while ((line = br2.readLine()) != null) {
+                    String[] parts = line.split("\\t", 2);
+                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
+                }
+                while ((line = br3.readLine()) != null) {
+                    String[] parts = line.split("\\t", 2);
+                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
         b = root.findViewById(R.id.button);
         e = root.findViewById(R.id.checkTextField);
         v = root.findViewById(R.id.definition);
@@ -39,17 +68,24 @@ public class WordCheckerFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable r) {
                 s = e.getText().toString().trim();
-                if(s.length() > 1 && s.length() < 16){
+                //if(e.getCurrentTextColor() == ContextCompat.getColor(getContext(), R.color.green) || e.getCurrentTextColor() == ContextCompat.getColor(getContext(), R.color.red) ){
+                //    e.setTextColor(ContextCompat.getColor(getContext(), R.color.black));
+                //    e.setText("");
+               // }
+                if (s.length() > 1 && s.length() < 16) {
                     b.setEnabled(true);
-                }
-                else{
+                } else {
                     b.setEnabled(false);
                 }
             }
+
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         };
         e.addTextChangedListener(tw);
         e.setOnClickListener(new View.OnClickListener() {
@@ -68,45 +104,6 @@ public class WordCheckerFragment extends Fragment {
             }
         });
         // INIT WORDS AND DEFINTIONS
-        Reader reader;
-        definitionMap = new HashMap<>();
-
-        InputStream file = null;
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_1.txt")));
-            BufferedReader br2 = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_2.txt")));
-            BufferedReader br3 = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_3.txt")));
-
-                String line;
-
-            while ((line = br.readLine()) != null) {
-                // process the line.
-                if (!line.trim().equals(null)){
-                    String[] parts = line.split("\\t", 2);
-                    if (parts.length == 2)
-                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
-                }
-            }
-                while ((line = br2.readLine()) != null) {
-                    // process the line.
-                    if (!line.trim().equals(null)){
-                        String[] parts = line.split("\\t", 2);
-                        if (parts.length == 2)
-                        definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
-                    }
-                }
-            while ((line = br3.readLine()) != null) {
-                // process the line.
-                if (!line.trim().equals(null)){
-                    String[] parts = line.split("\\t", 2);
-                    if (parts.length == 2)
-                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
-                }
-            }
-        } catch (IOException ex) {
-            Log.e("TAG", ex+"");
-            ex.printStackTrace();
-        }
 
 
             /*
@@ -121,20 +118,22 @@ public class WordCheckerFragment extends Fragment {
              */
         return root;
     }
-    public boolean checkValidity(String s){
 
-        boolean contains =  definitionMap.containsKey(s.toLowerCase().trim());
+    public boolean checkValidity(String s) {
+
+        boolean contains = definitionMap.containsKey(s.toLowerCase().trim());
         if (contains) {
             String definition = definitionMap.get(s);
             v.setText(definition);
             e.setTextColor(ContextCompat.getColor(getContext(), R.color.green));
             e.setText(e.getText().toString() + " is a word");
-        }
-        else{
+        } else {
             e.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
             e.setText(e.getText().toString() + " is not a word");
         }
         b.setEnabled(false);
         return (contains);
     }
+
 }
+

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:layout_marginBottom="20dp"
-            android:hint="Enter a word here"
+            android:hint="Enter a word here (2 to 15 letters)"
             android:textColor="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
 
