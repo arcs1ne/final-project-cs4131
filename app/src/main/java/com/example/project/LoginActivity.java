@@ -25,6 +25,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.HashMap;
+
 /**
  * Demonstrate Firebase Authentication using a Google ID Token.
  */
@@ -33,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
-
+    static HashMap<String, String> definitionMap;
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
@@ -72,6 +80,32 @@ public class LoginActivity extends AppCompatActivity implements
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
+        // initialize hashmap
+        if (definitionMap == null) {
+            Reader reader;
+            definitionMap = new HashMap<>();
+            InputStream file = null;
+            try {
+                BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("csw19_1.txt")));
+                BufferedReader br2 = new BufferedReader(new InputStreamReader(getAssets().open("csw19_2.txt")));
+                BufferedReader br3 = new BufferedReader(new InputStreamReader(getAssets().open("csw19_3.txt")));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split("\\t", 2);
+                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
+                }
+                while ((line = br2.readLine()) != null) {
+                    String[] parts = line.split("\\t", 2);
+                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
+                }
+                while ((line = br3.readLine()) != null) {
+                    String[] parts = line.split("\\t", 2);
+                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     // [START on_start_check_user]
@@ -240,5 +274,9 @@ public class LoginActivity extends AppCompatActivity implements
     public void onStop() {
         super.onStop();
         hideProgressBar();
+    }
+
+    public static HashMap<String,String> getDefinitionMap(){
+        return definitionMap;
     }
 }

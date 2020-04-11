@@ -32,17 +32,19 @@
     <!-- Bingo: Type all possible words with the given stem.  -->
     <TextView
         android:id="@+id/title"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TITLE"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:textColor="@color/black"
-        android:textSize="30dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/question"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
+        android:visibility="invisible"
         android:layout_marginBottom="30dp"
         android:layout_height="wrap_content"
         android:text="QUESTION"
@@ -60,6 +62,7 @@
         android:layout_gravity="center"
         android:textSize="13dp"/>
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til"
         android:visibility="invisible"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -71,21 +74,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter possible words"
-            android:textColor="@color/black"
-            android:gravity="center"/>
+            android:textColor="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <!-- 4, bingo -->
-    <Button
-        android:visibility="invisible"
-        android:id="@+id/next"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:text="Next"/>
     <!--2 3-->
     <LinearLayout
-
+        android:id="@+id/yesno"
         android:visibility="invisible"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -111,15 +104,50 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/red"/>
     </LinearLayout>
+
+    <!--  all  -->
+    <Button
+        android:visibility="invisible"
+        android:id="@+id/next"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Next"/>
+    <LinearLayout
+        android:id="@+id/submitskip"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Submit"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/skip"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Skip"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
     <!--2 3 letter-->
     <TextView
         android:id="@+id/result"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="answer correct?"
         android:layout_gravity="center"
-
         android:visibility="invisible"
         android:layout_marginTop="20dp"
         android:textSize="20dp"/>
@@ -128,7 +156,8 @@
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="score"
+        android:text="Score: 0"
+        android:visibility="invisible"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="20dp"/>

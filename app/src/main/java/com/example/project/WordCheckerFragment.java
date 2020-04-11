@@ -28,39 +28,15 @@ public class WordCheckerFragment extends Fragment {
     static TextInputEditText e;
     static TextView v;
     static String s;
-    static HashMap<String, String> definitionMap;
-
+    HashMap<String,String>dm = LoginActivity.getDefinitionMap();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_checker, container, false);
-        if (definitionMap == null) {
-            Reader reader;
-            definitionMap = new HashMap<>();
-            InputStream file = null;
-            try {
-                BufferedReader br = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_1.txt")));
-                BufferedReader br2 = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_2.txt")));
-                BufferedReader br3 = new BufferedReader(new InputStreamReader(getContext().getAssets().open("csw19_3.txt")));
-                String line;
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\t", 2);
-                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
-                }
-                while ((line = br2.readLine()) != null) {
-                    String[] parts = line.split("\\t", 2);
-                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
-                }
-                while ((line = br3.readLine()) != null) {
-                    String[] parts = line.split("\\t", 2);
-                    definitionMap.put(parts[0].toLowerCase().trim(), parts[1].trim());
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
+        //
 
+    //
         b = root.findViewById(R.id.button);
         e = root.findViewById(R.id.checkTextField);
         v = root.findViewById(R.id.definition);
@@ -120,10 +96,9 @@ public class WordCheckerFragment extends Fragment {
     }
 
     public boolean checkValidity(String s) {
-
-        boolean contains = definitionMap.containsKey(s.toLowerCase().trim());
+        boolean contains = dm.containsKey(s.toLowerCase().trim());
         if (contains) {
-            String definition = definitionMap.get(s);
+            String definition = dm.get(s);
             v.setText(definition);
             e.setTextColor(ContextCompat.getColor(getContext(), R.color.green));
             e.setText(e.getText().toString() + " is a word");
@@ -134,6 +109,7 @@ public class WordCheckerFragment extends Fragment {
         b.setEnabled(false);
         return (contains);
     }
+    //public HashMap<String, String> getDefinitionMap(){}
 
 }
 

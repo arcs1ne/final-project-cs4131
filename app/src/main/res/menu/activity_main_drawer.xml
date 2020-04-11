@@ -13,10 +13,6 @@
             android:icon="@drawable/ic_noun_scan_1647111"
             android:title="@string/menu_scan" />
         <item
-            android:id="@+id/nav_rating"
-            android:icon="@drawable/ic_noun_star_3238640"
-            android:title="@string/menu_rating" />
-        <item
             android:id="@+id/nav_check"
             android:icon="@drawable/ic_noun_check_3244673"
             android:title="@string/menu_checker"/>

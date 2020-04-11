@@ -143,12 +143,14 @@ public class ScanFragment extends Fragment {
                     try {
                         image = FirebaseVisionImage.fromFilePath(getContext(), photoURI);
                         scan();
+                        i.setImageURI(photoURI);
+                        if (photoURI != null){
+                            t.setText("");
+                            s.setText("");
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    i.setImageURI(photoURI);
-                    t.setText("");
-                    s.setText("");
                 }
                 break;
             case 3:
@@ -158,12 +160,14 @@ public class ScanFragment extends Fragment {
                         image = FirebaseVisionImage.fromFilePath(getContext(), photoURI);
                         scan();
                         i.setImageURI(photoURI);
+                        if (photoURI != null){
+                            t.setText("");
+                            s.setText("");
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                t.setText("");
-                s.setText("");
                 break;
         }
     }
