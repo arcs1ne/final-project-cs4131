@@ -22,13 +22,21 @@
             android:title="@string/menu_play" />
 
     </group>
-    <item android:title="@string/menu_lessons"
+    <item android:title="@string/menu_help"
         android:icon="@drawable/ic_noun_lesson_269257">
         <menu>
             <item
-                android:title="tbc" />
+                android:id="@+id/nav_about"
+                android:title="About Scrabble Club" />
             <item
-                android:title="tbc2" />
+                android:id="@+id/nav_apply"
+                android:title="Apply" />
+            <item
+                android:id="@+id/nav_email"
+                android:title="Email developer"/>
+            <item
+                android:id="@+id/nav_faq"
+                android:title="FAQ"/>
         </menu>
     </item>
 </menu>

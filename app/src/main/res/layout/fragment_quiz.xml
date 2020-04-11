@@ -38,11 +38,11 @@
         android:text="TITLE"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="25dp"/>
     <TextView
         android:id="@+id/question"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_width="wrap_content"
         android:visibility="invisible"
         android:layout_marginBottom="30dp"
@@ -55,7 +55,7 @@
     <TextView
         android:visibility="invisible"
         android:id="@+id/typedsofar"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TYPED SO FAR"
@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter possible words"
-            android:textColor="@color/black"/>
+            android:textColor="?android:attr/textColorPrimary"/>
     </com.google.android.material.textfield.TextInputLayout>
     <!--2 3-->
     <LinearLayout
@@ -101,7 +101,7 @@
             android:layout_height="match_parent"
             android:text="NO"
             android:layout_marginRight="10dp"
-            android:textColor="@color/black"
+            android:textColor="?android:attr/textColorPrimary"
             android:backgroundTint="@color/red"/>
     </LinearLayout>
 
@@ -144,7 +144,7 @@
     <!--2 3 letter-->
     <TextView
         android:id="@+id/result"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -153,7 +153,7 @@
         android:textSize="20dp"/>
     <TextView
         android:id="@+id/score"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Score: 0"
