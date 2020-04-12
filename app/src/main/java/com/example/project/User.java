@@ -11,14 +11,12 @@ import java.util.ArrayList;
 
 public class User {
     private String name, student_id;
-    private int rating;
     private boolean isAdmin;
     private static ArrayList<User> userArrayList = initArrayList();
 
-    public User(String name, String student_id, int rating, boolean isAdmin) {
+    public User(String name, String student_id, boolean isAdmin) {
         this.name = name;
         this.student_id = student_id;
-        this.rating = rating;
         this.isAdmin = false;
     }
 
@@ -26,9 +24,6 @@ public class User {
         return name;
     }
     public String getStudent_id(){return student_id;}
-    public int getRating() {
-        return rating;
-    }
 
     public boolean isAdmin() {
         return isAdmin;
@@ -46,8 +41,7 @@ public class User {
                 for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                     String name = doc.get("name", String.class);
                     String student_id = doc.get("student_id", String.class);
-                    int rating = doc.get("rating", Integer.class);
-                    addToArrayList(userArrayList, new User(name, student_id,rating,false));
+                    addToArrayList(userArrayList, new User(name, student_id,false));
                 }
             }
         });

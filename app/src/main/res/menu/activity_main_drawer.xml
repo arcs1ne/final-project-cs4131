@@ -20,23 +20,21 @@
             android:id="@+id/nav_play"
             android:icon="@drawable/ic_noun_crossword_puzzle_1176719"
             android:title="@string/menu_play" />
-
     </group>
-    <item android:title="@string/menu_help"
-        android:icon="@drawable/ic_noun_lesson_269257">
+    <item android:title="@string/header">
         <menu>
             <item
-                android:id="@+id/nav_about"
-                android:title="About Scrabble Club" />
+                android:id="@+id/nav_lesson"
+                android:icon="@drawable/ic_noun_lesson_269257"
+                android:title="@string/menu_lessons"/>
             <item
-                android:id="@+id/nav_apply"
+                android:id="@+id/nav_application"
+                android:icon="@drawable/ic_noun_application_2736824"
                 android:title="Apply" />
             <item
                 android:id="@+id/nav_email"
+                android:icon="@drawable/ic_noun_email_2271438"
                 android:title="Email developer"/>
-            <item
-                android:id="@+id/nav_faq"
-                android:title="FAQ"/>
         </menu>
     </item>
 </menu>

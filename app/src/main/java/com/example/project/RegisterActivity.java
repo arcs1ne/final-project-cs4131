@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
         else{field.put("PFP_URI", "");}
         Log.d("Register died", name + " " + student_id + " " + FILE_URI);
          */
-        userArrayList.add(new User(name,student_id, 0,false));
+        userArrayList.add(new User(name,student_id,false));
         db.collection("projectusers").document(name).set(field);
         Toast toast = Toast.makeText(getApplicationContext(), "Successfully registered!", Toast.LENGTH_LONG);
         toast.show();

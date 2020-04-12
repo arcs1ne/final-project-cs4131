@@ -9,9 +9,7 @@
         android:id="@+id/nav_quiz"
         android:name="com.example.project.QuizFragment"
         android:label="@string/menu_quiz"
-        tools:layout="@layout/fragment_quiz">
-    </fragment>
-
+        tools:layout="@layout/fragment_quiz"/>
     <fragment
         android:id="@+id/nav_scan"
         android:name="com.example.project.ScanFragment"
@@ -23,8 +21,23 @@
         android:label="@string/menu_checker"
         tools:layout="@layout/fragment_checker" />
     <fragment
+        android:id="@+id/nav_lesson"
+        android:name="com.example.project.LessonFragment"
+        android:label="@string/menu_lessons"
+        tools:layout="@layout/fragment_lesson"/>
+    <fragment
         android:id="@+id/nav_play"
         android:name="com.example.project.PlayFragment"
         android:label="@string/menu_play"
         tools:layout="@layout/fragment_play" />
+    <fragment
+        android:id = "@+id/nav_email"
+        android:name="com.example.project.EmailFragment"
+        android:label="@string/menu_email"
+        tools:layout="@layout/fragment_email"/>
+    <fragment
+        android:id = "@+id/nav_application"
+        android:name="com.example.project.ApplicationFragment"
+        android:label="@string/menu_application"
+        tools:layout="@layout/fragment_apply"/>
 </navigation>
