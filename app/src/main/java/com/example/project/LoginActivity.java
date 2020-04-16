@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
-
+    private FirebaseUser currentUser;
     private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
     private TextView mDetailTextView;
@@ -54,17 +54,15 @@ public class LoginActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
-
+        if (mAuth != null)
+            revokeAccess();
         // Views
         mStatusTextView = findViewById(R.id.status);
-        mDetailTextView = findViewById(R.id.detail);
         setProgressBar(R.id.progressBar);
 
         // Button listeners
         findViewById(R.id.altSignIn).setOnClickListener(this);
         findViewById(R.id.signInButton).setOnClickListener(this);
-        findViewById(R.id.signOutButton).setOnClickListener(this);
-        findViewById(R.id.disconnectButton).setOnClickListener(this);
 
         // [START config_signin]
         // Configure Google Sign In
@@ -113,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
     // [END on_start_check_user]
@@ -159,6 +157,7 @@ public class LoginActivity extends AppCompatActivity implements
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("pic", mAuth.getCurrentUser().getPhotoUrl().toString());
                             intent.putExtra("name", mAuth.getCurrentUser().getDisplayName());
                             intent.putExtra("status", "User");
                             startActivity(intent);
@@ -214,19 +213,6 @@ public class LoginActivity extends AppCompatActivity implements
 
     private void updateUI(FirebaseUser user) {
         hideProgressBar();
-        if (user != null) {
-            mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
-            findViewById(R.id.signInAndLogin).setVisibility(View.GONE);
-            findViewById(R.id.signOutAndDisconnect).setVisibility(View.VISIBLE);
-        } else {
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
-
-            findViewById(R.id.signInAndLogin).setVisibility(View.VISIBLE);
-            findViewById(R.id.signOutAndDisconnect).setVisibility(View.GONE);
-        }
     }
 
     @Override
@@ -234,10 +220,6 @@ public class LoginActivity extends AppCompatActivity implements
         int i = v.getId();
         if (i == R.id.signInButton) {
             signIn();
-        } else if (i == R.id.signOutButton) {
-            signOut();
-        } else if (i == R.id.disconnectButton) {
-            revokeAccess();
         }
         else{
             Intent intent = new Intent(this, ManualLoginActivity.class);

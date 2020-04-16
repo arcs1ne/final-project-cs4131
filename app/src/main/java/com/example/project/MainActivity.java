@@ -1,10 +1,12 @@
 package com.example.project;
 
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         String statusstr = getIntent().getExtras().getString("status");
         user.setText(name);
         status.setText(statusstr);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(

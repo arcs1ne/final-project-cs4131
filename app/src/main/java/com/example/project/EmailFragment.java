@@ -78,11 +78,8 @@ public class EmailFragment extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT, "To the developers:\n\nI am " + name + " from class " + classs + ". " + body);
-        ArrayList<Uri> uriArrayList = new ArrayList<>();
-        emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriArrayList);
         try{
             startActivity(Intent.createChooser(emailIntent, "Choose an email client"));
-            getActivity().finish();
         }
         catch(android.content.ActivityNotFoundException e){
             Toast.makeText(getContext(), "No email client found", Toast.LENGTH_LONG).show();

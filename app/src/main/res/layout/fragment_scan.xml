@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
+    android:backgroundTint="?android:attr/textColorPrimaryInverse"
     android:layout_marginTop="10dp"
     tools:context=".ScanFragment">
 

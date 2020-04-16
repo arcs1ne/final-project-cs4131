@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:backgroundTint="?android:attr/textColorPrimaryInverse"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -36,7 +37,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/mcont1"
-                android:textColor="#000000"
+                android:textColor="?android:attr/textColorPrimary"
                 android:minLines="8"
                 android:enabled="false"
                 android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                     android:id="@+id/mcont2"
                     android:layout_width="match_parent"
                     android:enabled="false"
-                    android:textColor="#000000"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:minLines="8" />
@@ -67,7 +68,7 @@
                     android:id="@+id/mcont3"
                     android:layout_width="match_parent"
                     android:enabled="false"
-                    android:textColor="#000000"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:minLines="8" />

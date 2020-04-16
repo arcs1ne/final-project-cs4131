@@ -75,11 +75,8 @@ public class ApplicationFragment extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Scrabble Club Application: " + namee);
         emailIntent.putExtra(Intent.EXTRA_TEXT, "To Scrabble Club ExCo:\n\nI am " + namee + " (" + idd + ") from class " + mgg + ". and I am applying for Scrabble Club because " + reasonn);
-        ArrayList<Uri> uriArrayList = new ArrayList<>();
-        emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriArrayList);
         try{
             startActivity(Intent.createChooser(emailIntent, "Choose an email client"));
-            getActivity().finish();
         }
         catch(android.content.ActivityNotFoundException e){
             Toast.makeText(getContext(), "No email client found", Toast.LENGTH_LONG).show();

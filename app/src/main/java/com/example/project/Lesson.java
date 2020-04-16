@@ -1,6 +1,7 @@
 package com.example.project;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import android.util.Log;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -8,15 +9,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Lesson implements Comparable<Lesson> {
-    private String title, h1, h2, h3;
-    private int number;
-    private HashMap<String, String> contentMap = new HashMap<>();
-    private static ArrayList<Lesson> lessonArrayList = initArrayList();
+    String title, h1, h2, h3;
+    int number;
+    HashMap<String, String> contentMap = new HashMap<>();
+    public static ArrayList<Lesson> lessonArrayList = initArrayList();
 
     public Lesson (int number, String title, HashMap<String,String> content, String head1, String head2, String head3){
         this.title = title;
@@ -55,12 +54,12 @@ public class Lesson implements Comparable<Lesson> {
         return "Number:" + getNumber() + "\nTitle:" + getTitle() + "\nContent:" + getContentMap();
     }
     public static ArrayList<Lesson> initArrayList() {
-        lessonArrayList = new ArrayList<>();
+        ArrayList<Lesson> lessonArrayList = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Task<QuerySnapshot> recordingTask = db.collection("lessons").get();
-        while(!recordingTask.isComplete()){}
-        if(recordingTask.isSuccessful()) {
-            QuerySnapshot snapshot = recordingTask.getResult();
+        Task<QuerySnapshot> lessonTask = db.collection("lessons").get();
+        while(!lessonTask.isComplete()){}
+        if(lessonTask.isSuccessful()) {
+            QuerySnapshot snapshot = lessonTask.getResult();
             for (QueryDocumentSnapshot doc : snapshot) {
                 int number = doc.get("number", Integer.class);
                 String title = doc.get("title", String.class);
@@ -74,7 +73,8 @@ public class Lesson implements Comparable<Lesson> {
                 temp.put(head1, cont1);
                 temp.put(head2, cont2);
                 temp.put(head3, cont3);
-                addToArrayList(lessonArrayList, new Lesson(number, title, temp, head1, head2, head3));
+                lessonArrayList.add(new Lesson(number, title, temp, head1, head2, head3));
+                Log.d("TAG", lessonArrayList+"");
             }
             Collections.sort(lessonArrayList);
         }

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:backgroundTint="?android:attr/textColorPrimaryInverse"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="20dp"
@@ -30,135 +31,152 @@
     <!-- 2/3: Is this a valid x-letter word? -->
     <!-- 4JQX: Unscramble the following letters. -->
     <!-- Bingo: Type all possible words with the given stem.  -->
-    <TextView
-        android:id="@+id/title"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TITLE"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="25dp"/>
-    <TextView
-        android:id="@+id/question"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_width="wrap_content"
-        android:visibility="invisible"
-        android:layout_marginBottom="30dp"
-        android:layout_height="wrap_content"
-        android:text="QUESTION"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:textSize="20dp"/>
-    <!-- bingo-->
-    <TextView
-        android:visibility="invisible"
-        android:id="@+id/typedsofar"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TYPED SO FAR"
-        android:layout_gravity="center"
-        android:textSize="13dp"/>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til"
-        android:visibility="invisible"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content">
-        <!--  4 letter and bingo use  -->
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/word"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="TITLE"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="25dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="30dp"
+            android:text="QUESTION"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="20dp"
+            android:visibility="invisible" />
+        <!-- bingo-->
+        <TextView
+            android:id="@+id/typedsofar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="TYPED SO FAR"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="13dp"
+            android:visibility="invisible" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter possible words"
-            android:textColor="?android:attr/textColorPrimary"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <!--2 3-->
-    <LinearLayout
-        android:id="@+id/yesno"
-        android:visibility="invisible"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/yes"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Yes"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@color/green"/>
+            android:layout_marginTop="10dp"
+            android:visibility="invisible">
+            <!--  4 letter and bingo use  -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/word"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter possible words"
+                android:singleLine="true"
+                android:textColor="?android:attr/textColorPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--2 3-->
+        <LinearLayout
+            android:id="@+id/yesno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="invisible">
 
+            <Button
+                android:id="@+id/yes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green"
+                android:text="Yes" />
+
+            <Button
+                android:id="@+id/no"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/red"
+                android:text="NO"
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
+
+        <!--  all  -->
         <Button
-            android:id="@+id/no"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="NO"
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
+            android:text="Next"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/submitskip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:text="Submit" />
+
+            <Button
+                android:id="@+id/skip"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Skip" />
+        </LinearLayout>
+
+        <!--2 3 letter-->
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:textColor="?android:attr/textColorPrimary"
-            android:backgroundTint="@color/red"/>
+            android:textSize="20dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Score: 0"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="20dp"
+            android:visibility="invisible" />
     </LinearLayout>
-
-    <!--  all  -->
-    <Button
-        android:visibility="invisible"
-        android:id="@+id/next"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:text="Next"/>
-    <LinearLayout
-        android:id="@+id/submitskip"
-        android:visibility="invisible"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Submit"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"/>
-
-        <Button
-            android:id="@+id/skip"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Skip"
-            android:layout_marginRight="10dp"/>
-    </LinearLayout>
-
-    <!--2 3 letter-->
-    <TextView
-        android:id="@+id/result"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible"
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"/>
-    <TextView
-        android:id="@+id/score"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Score: 0"
-        android:visibility="invisible"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"/>
+    </ScrollView>
 </LinearLayout>

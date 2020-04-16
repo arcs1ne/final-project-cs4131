@@ -5,6 +5,7 @@
     android:layout_marginTop="30dp"
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
+    android:backgroundTint="?android:attr/textColorPrimaryInverse"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
@@ -25,6 +26,7 @@
         android:id="@+id/nameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginBottom="20dp"
         android:hint="Name" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -39,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:hint="Student ID"
-            android:textColor="#000000" />
+            android:textColor="?android:attr/textColorPrimary" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -53,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:hint="Class"
-            android:textColor="#000000" />
+            android:textColor="?android:attr/textColorPrimary"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -67,7 +69,7 @@
             android:lines="5"
             android:hint="Why you want to apply"
             android:layout_marginBottom="20dp"
-            android:textColor="#000000" />
+            android:textColor="?android:attr/textColorPrimary" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <Button
